@@ -16,36 +16,51 @@ class RoutesController extends CI_Controller {
 		$this->load->view('register');
 	}
 	public function home(){
-		$this->load->view('header');
-		$this->load->view('home');
-		$this->load->view('footer');
+		if($this->session->userdata('id')){
+			$this->load->view('header');
+			$this->load->view('home');
+			$this->load->view('footer');
+		}else{
+			$this->load->view('login');
+		}
 	}
 	public function page1(){
-		$this->load->view('header');
-		$this->load->view('page1');
-		$this->load->view('footer');
+		if($this->session->userdata('id')){
+			$this->load->view('header');
+			$this->load->view('page1');
+			$this->load->view('footer');
+		}else{
+			$this->load->view('login');
+		}
 	}
-	public function redirectToPage1(){
+	public function checkToken(){
 
 		$this->load->helper('custome_helper');
 
 		if(validateToken()){
 			echo json_encode([
 				"status" => true,
-				"data" => [
-					"redirect" => 'page1'
-				]
+				"message" => "Token is valid."
 			]);
 		}else{
 			echo json_encode([
-				"status" => true,
+				"status" => false,
 				"message" => "Not invalid or expired token."
 			]);
 		}
 	}
 	public function page2(){
-		$this->load->view('header');
-		$this->load->view('page2');
-		$this->load->view('footer');
+		if($this->session->userdata('id')){
+			$this->load->view('header');
+			$this->load->view('page2');
+			$this->load->view('footer');
+		}else{
+			$this->load->view('login');
+		}
+	}
+
+	public function logout(){
+		$this->session->sess_destroy();
+		$this->load->view('login');
 	}
 }

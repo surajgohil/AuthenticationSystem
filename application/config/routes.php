@@ -9,12 +9,8 @@ $route['register'] = 'RoutesController/register';
 $route['home'] = 'RoutesController/home';
 $route['page1'] = 'RoutesController/page1';
 $route['page2'] = 'RoutesController/page2';
-$route['redirectToPage1'] = 'RoutesController/redirectToPage1';
-
-// $route['register'] = 'auth/register';
-// $route['login'] = 'auth/login';
-// $route['protected'] = 'auth/protectedRoute';
-
+$route['checkToken'] = 'RoutesController/checkToken';
+$route['logout'] = 'RoutesController/logout';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

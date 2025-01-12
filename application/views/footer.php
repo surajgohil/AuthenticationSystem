@@ -1,7 +1,7 @@
 <script>
     function changePage(page){
         $.ajax({
-            url: `<?= base_url() ?>${page}`,
+            url: `<?= base_url() ?>checkToken`,
             type: 'POST',
             headers: {
                 'Authorization': localStorage.getItem('token'),
@@ -9,7 +9,7 @@
             dataType: 'json',
             success: function(response) {
                 if (response.status === true) {
-                    window.location.href = response.data.redirect;
+                    window.location.href = page;
                 } else {
                     alert(response.message);
                 }

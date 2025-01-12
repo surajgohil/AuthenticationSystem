@@ -1,2 +1,2 @@
-<h1 style="color: #fff;">This is welcome book</h1>
-<button onclick="changePage('redirectToPage1')" class="btn btn-primary">redirectToPage1</button>
+<h1 style="color: #fff;">Welcome to Home</h1>
+<button onclick="changePage('page1')" class="btn btn-warning">Redirect to Page 1</button>

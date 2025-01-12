@@ -15,6 +15,7 @@ class Auth extends CI_Controller {
         $this->load->database();
         $this->load->library(['form_validation']);
         $this->load->helper(['url', 'security']);
+        $this->load->library('session');
     }
 
     public function register() {
@@ -43,15 +44,17 @@ class Auth extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('users', ['email' => $email])->row();
-        if (!$user || !password_verify($password, $user->password)) {
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+        if (empty($user) || !password_verify($password, $user['password'])) {
             echo json_encode(['status' => false, 'message' => 'Invalid email or password']);
             return;
         }
 
+        $this->session->set_userdata($user);
+
         $payload = [
-            'id' => $user->id,
-            'email' => $user->email,
+            'id' => $user['id'],
+            'email' => $user['email'],
             'exp' => time() + (60 * 60) // Token expires in 1 hour
         ];
         $token = JWT::encode($payload, $this->key, 'HS256');

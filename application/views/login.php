@@ -14,11 +14,22 @@
     <!-- Bootstrap JS CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background: #000000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container mt-5">
-    <h2>Login</h2>
+<div class="container w-25 border rounded p-5">
+    <h2 class="w-100 text-center">Login</h2>
     <form id="loginForm">
         <div class="form-group">
             <label for="email">Email:</label>
@@ -28,7 +39,10 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn w-100 btn-warning">Login</button>
+        <div class="mt-2 text-center">
+            Redirect to <a href="register">Register</a>
+        </div>
     </form>
 </div>
 

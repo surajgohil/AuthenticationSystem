@@ -18,8 +18,22 @@
 
     <style>
         body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background: black;
+        }
+        .logoutBtn{
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     </style>
 </head>
 <body>
+    <div class="logoutBtn ml-auto">
+        <a href="logout" class="btn btn-danger">Logout</a>
+    </div>
